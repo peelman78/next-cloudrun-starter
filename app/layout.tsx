@@ -3,8 +3,8 @@ import type { ReactNode } from 'react';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'MIRACL prototype',
-  description: 'A MIRACL team prototype, built from the proto-template.',
+  title: 'Prototype',
+  description: 'A prototype built from the next-cloudrun-starter.',
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

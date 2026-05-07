@@ -44,11 +44,6 @@ h1 {
   line-height: 1.1;
 }
 
-.suffix {
-  opacity: 0.4;
-  font-weight: 400;
-}
-
 code {
   font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
   background: rgba(255, 255, 255, 0.08);

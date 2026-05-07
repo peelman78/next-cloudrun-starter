@@ -28,10 +28,9 @@ jobs:
       - name: Compute service name
         id: svc
         run: |
-          BARE="${GITHUB_REPOSITORY#*/}"
-          echo "bare=$BARE" >> "$GITHUB_OUTPUT"
-          echo "name=$BARE-miracl" >> "$GITHUB_OUTPUT"
-          echo "Deploying as: $BARE-miracl"
+          NAME="${GITHUB_REPOSITORY#*/}"
+          echo "name=$NAME" >> "$GITHUB_OUTPUT"
+          echo "Deploying as: $NAME"
 
       - name: Configure Docker for Artifact Registry
         run: gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev --quiet
@@ -53,7 +52,7 @@ jobs:
             --platform=managed \
             --allow-unauthenticated \
             --port=8080 \
-            --set-env-vars="PROTO_NAME=${{ steps.svc.outputs.bare }}"
+            --set-env-vars="PROTO_NAME=${{ steps.svc.outputs.name }}"
 
       - name: Show URL
         run: |

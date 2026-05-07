@@ -1,6 +1,6 @@
-# MIRACL prototype template
+# next-cloudrun-starter
 
-A Next.js 14 starter that deploys to Google Cloud Run as `<repo-name>-miracl` on every push to `main`. Use it as the starting point for any MIRACL team prototype that needs a live URL.
+A Next.js 14 starter that deploys to Google Cloud Run on every push to `main`. Use it as the starting point for any prototype that needs a live URL.
 
 ## What you get
 
@@ -15,13 +15,13 @@ A Next.js 14 starter that deploys to Google Cloud Run as `<repo-name>-miracl` on
 2. **Repo secrets** (Settings → Secrets and variables → Actions):
    - `GCP_PROJECT_ID` — the GCP project you're deploying into
    - `GCP_SA_KEY` — JSON key for a service account with `roles/run.admin`, `roles/artifactregistry.writer`, `roles/iam.serviceAccountUser`
-3. **Push** any change to `main` (or trigger the workflow from the Actions tab). The first deploy creates the Cloud Run service `acme-miracl` and prints its URL in the workflow notices.
+3. **Push** any change to `main` (or trigger the workflow from the Actions tab). The first deploy creates the Cloud Run service `acme` and prints its URL in the workflow notices.
 
 ## Service naming
 
-Service name = `<github-repo-name>-miracl`. Repo `acme` → service `acme-miracl`. The workflow derives this automatically from `${{ github.repository }}` — there's no config to edit.
+Service name = the GitHub repo name. Repo `acme` → Cloud Run service `acme`. The workflow derives this automatically from `${{ github.repository }}` — there's no config to edit.
 
-The page reads the bare prototype name from `process.env.PROTO_NAME`, which the workflow sets to the repo name on each deploy. Use it for branding or downstream config in your prototype.
+The page reads the prototype name from `process.env.PROTO_NAME`, which the workflow sets to the repo name on each deploy. Use it for branding or downstream config in your prototype.
 
 ## GCP prerequisites (one-time, per project)
 
