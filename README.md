@@ -11,7 +11,7 @@ A Next.js 14 starter that deploys to Google Cloud Run as `<repo-name>-miracl` on
 
 ## Use as a template
 
-1. **GitHub:** click **Use this template** → **Create a new repository** in the `miracl` org. Name it after the prototype, e.g. `acme`. Cloud Run names must match `[a-z]([-a-z0-9]{0,48}[a-z0-9])?`, so keep the repo name lowercase.
+1. **GitHub:** click **Use this template** → **Create a new repository** under whichever GitHub owner has access (your user or your org). Name it after the prototype, e.g. `acme`. Cloud Run names must match `[a-z]([-a-z0-9]{0,48}[a-z0-9])?`, so keep the repo name lowercase.
 2. **Repo secrets** (Settings → Secrets and variables → Actions):
    - `GCP_PROJECT_ID` — the GCP project you're deploying into
    - `GCP_SA_KEY` — JSON key for a service account with `roles/run.admin`, `roles/artifactregistry.writer`, `roles/iam.serviceAccountUser`
