@@ -91,6 +91,8 @@ Watch the **Actions** tab. The workflow builds the image, pushes it to Artifact 
 
 Subsequent pushes to `main` re-deploy automatically.
 
+The workflow's **Allow public access** step grants `allUsers` the `roles/run.invoker` permission so the `*.run.app` URL is reachable. (`--allow-unauthenticated` on the deploy step does the same thing, but some org policies silently strip it — the explicit step is belt-and-braces.) If you front prototypes with a load balancer instead — Cloud Run private + LB-authenticated — delete that step and grant `roles/run.invoker` to the LB's service account.
+
 ## Service naming
 
 Service name = the GitHub repo name. Repo `acme` → Cloud Run service `acme`. The workflow derives this automatically from `${{ github.repository }}` — there's no config to edit.

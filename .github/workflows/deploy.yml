@@ -54,6 +54,17 @@ jobs:
             --port=8080 \
             --set-env-vars="PROTO_NAME=${{ steps.svc.outputs.name }}"
 
+      - name: Allow public access
+        # Idempotent. Belt-and-braces: --allow-unauthenticated above sets this
+        # binding too, but some org policies silently strip it during deploy.
+        # Setting it explicitly afterwards always works.
+        run: |
+          gcloud run services add-iam-policy-binding ${{ steps.svc.outputs.name }} \
+            --member="allUsers" \
+            --role="roles/run.invoker" \
+            --region="${{ env.REGION }}" \
+            --project="${{ secrets.GCP_PROJECT_ID }}"
+
       - name: Show URL
         run: |
           URL=$(gcloud run services describe ${{ steps.svc.outputs.name }} \
